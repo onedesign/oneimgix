@@ -1,0 +1,39 @@
+{#
+/**
+ * OneImgix plugin for Craft CMS
+ *
+ * OneImgix Settings.twig
+ *
+ * @author    One Design Company
+ * @copyright Copyright (c) 2017 One Design Company
+ * @link      https://www.onedesigncompany.com
+ * @package   OneImgix
+ * @since     1.0.0
+ */
+#}
+
+{% import "_includes/forms" as forms %}
+
+{{ forms.textField({
+    label: 'Imgix API Key',
+    instructions: 'Your Imgix API key.',
+    id: 'apiKey',
+    name: 'apiKey', 
+    value: settings['apiKey']})
+}}
+
+{{ forms.textField({
+    label: 'Imgix Source Name',
+    instructions: 'The name of your Imgix source.',
+    id: 'sourceName',
+    name: 'sourceName', 
+    value: settings['sourceName']})
+}}
+
+{{ forms.textField({
+    label: 'Asset Base URL',
+    instructions: 'This is the base url for your Craft assets, up to but not including the asset source directory. For instance: https://s3.amazonaws.com/your-bucket-name/',
+    id: 'assetBaseUrl',
+    name: 'assetBaseUrl', 
+    value: settings['assetBaseUrl']})
+}}

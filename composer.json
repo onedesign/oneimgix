@@ -1,0 +1,14 @@
+{
+  "name": "onedesign/oneimgix",
+  "description": "Tools for working with Imgix in Craft",
+  "type": "craft-plugin",
+  "authors": [
+    {
+      "name": "One Design Company",
+      "homepage": "https://www.onedesigncompany.com"
+    }
+  ],
+  "require": {
+    "composer/installers": "~1.0"
+  }
+}
