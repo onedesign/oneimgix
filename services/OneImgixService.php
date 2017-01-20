@@ -43,12 +43,13 @@ class OneImgixService extends BaseApplicationComponent
         return $this->settings->assetBaseUrl;
     }
 
-    public function url($asset, $params = [])
+    public function url($asset, $params = [], $startQueryString = true)
     {
       $imgixBaseUrl = $this->getImgixSourceUrl();
       $assetBaseUrl = $this->getAssetBaseUrl();
       $filepath = str_replace($assetBaseUrl, '', $asset->url);
       $url = $imgixBaseUrl . $filepath;
+      if ($startQueryString) $url = $url . '?';
       foreach ($params as $key => $val) {
         if ($val) {
           $url = $url . '&' . "${key}=${val}";
