@@ -18,6 +18,7 @@ OneImgix expects the following settings to be configured:
 
 - **Imgix API Key:** Your Imgix API key, obtained from the Imgix control panel.
 - **Imgix Source Name:** The name of your source defined in the Imgix control panel.
+- **Secure URL Token:** If you have `Secure URL` enabled for your Imgix source, this should be the `Secure URL Token` value listed there.
 - **Asset Base URL:** The base path to your original assets, which will be replaced with the Imgix base URL by this plugin. This will typically be something like `http://mysite.com/assets/` or `https://s3.amazonaws.com/my-bucket-name/`
 
 ### Generating Image URLs in Twig:
