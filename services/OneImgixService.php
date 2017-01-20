@@ -13,6 +13,8 @@
 
 namespace Craft;
 
+use Imgix\UrlBuilder;
+
 class OneImgixService extends BaseApplicationComponent
 {   
     protected $settings;
@@ -27,10 +29,10 @@ class OneImgixService extends BaseApplicationComponent
         return $this->settings->sourceName;
     }
 
-    public function getImgixSourceUrl()
+    public function getImgixUrl()
     {
         $source = $this->getImgixSource();
-        return "https://${source}.imgix.net/";
+        return "${source}.imgix.net";
     }
 
     public function getApiKey()
@@ -43,26 +45,24 @@ class OneImgixService extends BaseApplicationComponent
         return $this->settings->assetBaseUrl;
     }
 
-    public function url($asset, $params = [], $startQueryString = true)
+    public function builtImgixUrl($asset, $params = [])
     {
-      $imgixBaseUrl = $this->getImgixSourceUrl();
-      $assetBaseUrl = $this->getAssetBaseUrl();
-      $filepath = str_replace($assetBaseUrl, '', $asset->url);
-      $url = $imgixBaseUrl . $filepath;
-      if ($startQueryString) $url = $url . '?';
-      foreach ($params as $key => $val) {
-        if ($val) {
-          $url = $url . '&' . "${key}=${val}";
-        }
-      }
-      return $url;
+        $imgixUrl = $this->getImgixUrl();
+        $assetBaseUrl = $this->getAssetBaseUrl();
+        $builder = new UrlBuilder($imgixUrl);
+        $builder->setUseHttps(true);
+        $filepath = str_replace($assetBaseUrl, '', $asset->url);
+        return $builder->createURL($filepath, $params);
+    }
+
+    public function url($asset, $params = [])
+    {
+      return $this->builtImgixUrl($asset, $params);
     }
 
     public function purgeAsset($asset)
     {
-      $baseOriginalUrl = $this->getAssetBaseUrl();
-      $baseImgixUrl = $this->getImgixSourceUrl();
-      $url = str_replace($baseOriginalUrl, $baseImgixUrl, $asset->url);
+      $url = $this->builtImgixUrl($asset);
       $result = $this->purgeImgixUrl($url);
     }
 

@@ -30,8 +30,8 @@ class OneImgixVariable
         return craft()->oneImgix->getAssetBaseUrl();
     }
 
-    public function url($asset, $params = [], $startQueryString = true)
+    public function url($asset, $params = [])
     {
-        return craft()->oneImgix->url($asset, $params, $startQueryString);
+        return craft()->oneImgix->url($asset, $params);
     }
 }

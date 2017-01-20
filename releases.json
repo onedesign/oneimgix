@@ -1,10 +1,19 @@
 [
     {
         "version": "1.0.0",
-        "downloadUrl": "https://github.com/onedesign/oneimgix/archive/master.zip",
+        "downloadUrl": "https://github.com/onedesign/oneimgix/archive/v1.0.0.zip",
         "date": "2017-01-19T22:23:11.317Z",
         "notes": [
             "[Added] Initial release"
+        ]
+    }
+    ,
+    {
+        "version": "1.1.0",
+        "downloadUrl": "https://github.com/onedesign/oneimgix/archive/v1.1.0.zip",
+        "date": "2017-01-20T14:36:28Z",
+        "notes": [
+            "[Improved] Now uses official [imgix-php](https://github.com/imgix/imgix-php) library for generating URLs."
         ]
     }
 ]
