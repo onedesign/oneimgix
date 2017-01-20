@@ -29,7 +29,7 @@ class OneImgixService extends BaseApplicationComponent
         return $this->settings->sourceName;
     }
 
-    public function getImgixUrl()
+    public function getImgixDomain()
     {
         $source = $this->getImgixSource();
         return "${source}.imgix.net";
@@ -45,13 +45,22 @@ class OneImgixService extends BaseApplicationComponent
         return $this->settings->assetBaseUrl;
     }
 
+    public function getSecureUrlToken()
+    {
+        return $this->settings->secureUrlToken;
+    }
+
     public function builtImgixUrl($asset, $params = [])
     {
-        $imgixUrl = $this->getImgixUrl();
+        $imgixUrl = $this->getImgixDomain();
         $assetBaseUrl = $this->getAssetBaseUrl();
         $builder = new UrlBuilder($imgixUrl);
         $builder->setUseHttps(true);
         $filepath = str_replace($assetBaseUrl, '', $asset->url);
+        $secureUrlToken = $this->getSecureUrlToken();
+        if (strlen($secureUrlToken)) {
+          $builder->setSignKey($secureUrlToken);
+        }
         return $builder->createURL($filepath, $params);
     }
 
@@ -62,7 +71,10 @@ class OneImgixService extends BaseApplicationComponent
 
     public function purgeAsset($asset)
     {
-      $url = $this->builtImgixUrl($asset);
+      $baseOriginalUrl = $this->getAssetBaseUrl();
+      $imgixDomain = $this->getImgixDomain();
+      $baseImgixUrl = 'https://' . $imgixDomain . '/';
+      $url = str_replace($baseOriginalUrl, $baseImgixUrl, $asset->url);
       $result = $this->purgeImgixUrl($url);
     }
 

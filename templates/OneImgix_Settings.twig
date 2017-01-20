@@ -31,6 +31,14 @@
 }}
 
 {{ forms.textField({
+    label: 'Secure URL Token',
+    instructions: 'If you have `Secure URL` enabled for your Imgix source, this should be the `Secure URL Token` value listed there.',
+    id: 'secureUrlToken',
+    name: 'secureUrlToken', 
+    value: settings['secureUrlToken']})
+}}
+
+{{ forms.textField({
     label: 'Asset Base URL',
     instructions: 'This is the base url for your Craft assets, up to but not including the asset source directory. For instance: https://s3.amazonaws.com/your-bucket-name/',
     id: 'assetBaseUrl',

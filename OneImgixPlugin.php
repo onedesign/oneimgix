@@ -31,7 +31,7 @@ class OneImgixPlugin extends BasePlugin
     public function init()
     {   
         require_once __DIR__ . '/vendor/autoload.php';
-        
+
         craft()->on('assets.onReplaceFile', function(Event $event) {
           craft()->oneImgix->purgeAsset($event->params['asset']);
         });
@@ -182,6 +182,7 @@ class OneImgixPlugin extends BasePlugin
         return array(
             'apiKey' => array(AttributeType::String, 'label' => 'Imgix API Key', 'default' => ''),
             'sourceName' => array(AttributeType::String, 'label' => 'Imgix Source Name', 'default' => ''),
+            'secureUrlToken' => array(AttributeType::String, 'label' => 'Secure URL Token', 'default' => ''),
             'assetBaseUrl' => array(AttributeType::String, 'label' => 'Asset Base URL', 'default' => ''),
         );
     }

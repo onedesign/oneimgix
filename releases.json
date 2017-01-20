@@ -13,7 +13,8 @@
         "downloadUrl": "https://github.com/onedesign/oneimgix/archive/v1.1.0.zip",
         "date": "2017-01-20T14:36:28Z",
         "notes": [
-            "[Improved] Now uses official [imgix-php](https://github.com/imgix/imgix-php) library for generating URLs."
+            "[Improved] Now uses official [imgix-php](https://github.com/imgix/imgix-php) library for generating URLs.",
+            "[Added] Adds `Secure Token` plugin setting that, if used, will generate a secure URL."
         ]
     }
 ]
