@@ -16,7 +16,7 @@ namespace Craft;
 use Imgix\UrlBuilder;
 
 class OneImgixService extends BaseApplicationComponent
-{   
+{
     protected $settings;
 
     public function __construct()
@@ -97,8 +97,9 @@ class OneImgixService extends BaseApplicationComponent
 
             $response = $request->send();
         } catch (\Guzzle\Http\Exception\ClientErrorResponseException $exception) {
+            $statusCode = $exception->getResponse()->getStatusCode();
             $responseBody = $exception->getResponse()->getBody(true);
-            OneImgixPlugin::log('Imgix purge request returned a non-successful response: ' . $statusCode, LogLevel::Error, true);
+            OneImgixPlugin::log(sprintf('Imgix purge request returned a non-successful response: [%s] %s', $statusCode, $responseBody), LogLevel::Error, true);
             return false;
         }
 
