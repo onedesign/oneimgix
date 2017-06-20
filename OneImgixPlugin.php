@@ -29,7 +29,7 @@ class OneImgixPlugin extends BasePlugin
      * @return mixed
      */
     public function init()
-    {   
+    {
         require_once __DIR__ . '/vendor/autoload.php';
 
         craft()->on('assets.onReplaceFile', function(Event $event) {
@@ -94,7 +94,7 @@ class OneImgixPlugin extends BasePlugin
      */
     public function getVersion()
     {
-        return '1.1.0';
+        return '1.1.1';
     }
 
     /**
