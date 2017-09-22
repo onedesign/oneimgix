@@ -2,6 +2,7 @@
   "name": "onedesign/oneimgix",
   "description": "Tools for working with Imgix in Craft",
   "type": "craft-plugin",
+  "license": "MIT",
   "authors": [
     {
       "name": "One Design Company",
