@@ -19,10 +19,18 @@
     },
     {
         "version": "1.1.1",
-        "downloadUrl": "https://github.com/onedesign/oneimgix/archive/v1.1.1.zip",
+        "downloadUrl": "https://github.com/onedesign/oneimgix/archive/1.1.1.zip",
         "date": "2017-02-24T21:19:01Z",
         "notes": [
             "[Fixed] Fixed bug where errors were not being properly reported."
+        ]
+    },
+    {
+        "version": "1.2.0",
+        "downloadUrl": "https://github.com/onedesign/oneimgix/archive/1.2.0.zip",
+        "date": "2017-09-22T21:19:01Z",
+        "notes": [
+            "[Added] Adds MIT license."
         ]
     }
 ]
