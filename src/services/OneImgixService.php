@@ -27,7 +27,7 @@ class OneImgixService extends Component
     private function getImgixDomain()
     {
         $source = OneImgix::getInstance()->getSettings()->sourceName;
-        return "${source}.imgix.net";
+        return "https://${source}.imgix.net";
     }
 
     private function getApiKey()
