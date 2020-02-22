@@ -27,7 +27,7 @@ class OneImgixService extends Component
     private function getImgixDomain()
     {
         $source = Craft::parseEnv(OneImgix::getInstance()->getSettings()->sourceName);
-        return "https://${source}.imgix.net";
+        return "${source}.imgix.net";
     }
 
     private function getApiKey()
