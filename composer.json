@@ -1,0 +1,42 @@
+{
+  "name": "onedesign/oneimgix",
+  "description": "Tools for working with Imgix in Craft",
+  "type": "craft-plugin",
+  "keywords": [
+    "craft",
+    "cms",
+    "craftcms",
+    "craft-plugin",
+    "one imgix"
+  ],
+  "support": {
+    "docs": "https://github.com/onedesign/oneimgix/blob/master/README.md",
+    "issues": "https://github.com/onedesign/oneimgix/issues"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "One Design Company",
+      "homepage": "https://onedesigncompany.com/"
+    }
+  ],
+  "require": {
+    "craftcms/cms": "^3.0.0-RC1"
+  },
+  "autoload": {
+    "psr-4": {
+      "onedesign\\oneimgix\\": "src/"
+    }
+  },
+  "extra": {
+    "name": "One Imgix",
+    "handle": "one-imgix",
+    "hasCpSettings": true,
+    "hasCpSection": false,
+    "changelogUrl": "https://raw.githubusercontent.com/onedesign/oneimgix/master/CHANGELOG.md",
+    "components": {
+      "oneImgixService": "onedesign\\oneimgix\\services\\OneImgixService"
+    },
+    "class": "onedesign\\oneimgix\\OneImgix"
+  }
+}
