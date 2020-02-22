@@ -26,24 +26,23 @@ class OneImgixService extends Component
 {
     private function getImgixDomain()
     {
-        $source = OneImgix::getInstance()->getSettings()->sourceName;
+        $source = Craft::parseEnv(OneImgix::getInstance()->getSettings()->sourceName);
         return "https://${source}.imgix.net";
     }
 
     private function getApiKey()
     {
-        return OneImgix::getInstance()->getSettings()->apiKey;
-        return $this->settings->apiKey;
+        return Craft::parseEnv(OneImgix::getInstance()->getSettings()->apiKey);
     }
 
     private function getAssetBaseUrl()
     {
-        return OneImgix::getInstance()->getSettings()->assetBaseUrl;
+        return Craft::parseEnv(OneImgix::getInstance()->getSettings()->assetBaseUrl);
     }
 
     private function getSecureUrlToken()
     {
-        return OneImgix::getInstance()->getSettings()->secureUrlToken;
+        return Craft::parseEnv(OneImgix::getInstance()->getSettings()->secureUrlToken);
     }
 
     private function buildImgixUrl(Asset $asset, $params = [])
