@@ -10,6 +10,8 @@
 
 namespace onedesign\oneimgix\services;
 
+use craft\elements\Asset;
+use Imgix\UrlBuilder;
 use onedesign\oneimgix\OneImgix;
 
 use Craft;
@@ -22,19 +24,51 @@ use craft\base\Component;
  */
 class OneImgixService extends Component
 {
+    private function getImgixDomain()
+    {
+        $source = OneImgix::getInstance()->getSettings()->sourceName;
+        return "${source}.imgix.net";
+    }
+
+    private function getApiKey()
+    {
+        return OneImgix::getInstance()->getSettings()->apiKey;
+        return $this->settings->apiKey;
+    }
+
+    private function getAssetBaseUrl()
+    {
+        return OneImgix::getInstance()->getSettings()->assetBaseUrl;
+    }
+
+    private function getSecureUrlToken()
+    {
+        return OneImgix::getInstance()->getSettings()->secureUrlToken;
+    }
+
+    private function buildImgixUrl(Asset $asset, $params = [])
+    {
+        $imgixUrl = $this->getImgixDomain();
+        $assetBaseUrl = $this->getAssetBaseUrl();
+        $builder = new UrlBuilder($imgixUrl);
+        $builder->setUseHttps(true);
+        $filepath = str_replace($assetBaseUrl, '', $asset->url);
+        $secureUrlToken = $this->getSecureUrlToken();
+
+        if ('' != $secureUrlToken) {
+            $builder->setSignKey($secureUrlToken);
+        }
+        return $builder->createURL($filepath, $params);
+    }
+
     // Public Methods
     // =========================================================================
 
     /*
      * @return mixed
      */
-    public function exampleService()
+    final public function url(Asset $asset, array $params = []): string
     {
-        $result = 'something';
-        // Check our Plugin's settings for `someAttribute`
-        if (OneImgix::$plugin->getSettings()->someAttribute) {
-        }
-
-        return $result;
+        return $this->buildImgixUrl($asset, $params);
     }
 }

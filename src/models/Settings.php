@@ -28,7 +28,22 @@ class Settings extends Model
     /**
      * @var string
      */
-    public $someAttribute = 'Some Default';
+    public $apiKey = '';
+
+    /**
+     * @var string
+     */
+    public $sourceName = '';
+
+    /**
+     * @var string
+     */
+    public $secureUrlToken = '';
+
+    /**
+     * @var string
+     */
+    public $assetBaseUrl = '';
 
     // Public Methods
     // =========================================================================
@@ -39,8 +54,11 @@ class Settings extends Model
     public function rules()
     {
         return [
-            ['someAttribute', 'string'],
-            ['someAttribute', 'default', 'value' => 'Some Default'],
+            [['apiKey', 'sourceName', 'assetBaseUrl'], 'required'],
+            ['apiKey', 'string'],
+            ['sourceName', 'string'],
+            ['secureUrlToken', 'string'],
+            ['assetBaseUrl', 'string']
         ];
     }
 }

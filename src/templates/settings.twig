@@ -18,9 +18,33 @@
 {% do view.registerAssetBundle("onedesign\\oneimgix\\assetbundles\\oneimgix\\OneImgixAsset") %}
 
 {{ forms.textField({
-    label: 'Some Field',
-    instructions: 'Enter some setting here.',
-    id: 'someAttribute',
-    name: 'someAttribute',
-    value: settings['someAttribute']})
+    label: 'Imgix API Key',
+    instructions: 'Your Imgix API key.',
+    id: 'apiKey',
+    name: 'apiKey',
+    value: settings['apiKey']})
+}}
+
+{{ forms.textField({
+    label: 'Imgix Source Name',
+    instructions: 'The name of your Imgix source.',
+    id: 'sourceName',
+    name: 'sourceName',
+    value: settings['sourceName']})
+}}
+
+{{ forms.textField({
+    label: 'Secure URL Token',
+    instructions: 'If you have `Secure URL` enabled for your Imgix source, this should be the `Secure URL Token` value listed there.',
+    id: 'secureUrlToken',
+    name: 'secureUrlToken',
+    value: settings['secureUrlToken']})
+}}
+
+{{ forms.textField({
+    label: 'Asset Base URL',
+    instructions: 'This is the base url for your Craft assets, up to but not including the asset source directory. For instance: https://s3.amazonaws.com/your-bucket-name/',
+    id: 'assetBaseUrl',
+    name: 'assetBaseUrl',
+    value: settings['assetBaseUrl']})
 }}

@@ -10,6 +10,7 @@
 
 namespace onedesign\oneimgix\variables;
 
+use craft\elements\Asset;
 use onedesign\oneimgix\OneImgix;
 
 use Craft;
@@ -24,16 +25,9 @@ class OneImgixVariable
     // Public Methods
     // =========================================================================
 
-    /**
-     * @param null $optional
-     * @return string
-     */
-    public function exampleVariable($optional = null)
+    final public function url(Asset $asset, array $params = []): string
     {
-        $result = "And away we go to the Twig template...";
-        if ($optional) {
-            $result = "I'm feeling optional today...";
-        }
-        return $result;
+        return OneImgix::$plugin->oneImgixService->url($asset, $params);
     }
+
 }
