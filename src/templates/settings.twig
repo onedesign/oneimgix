@@ -18,37 +18,41 @@
 {% do view.registerAssetBundle("onedesign\\oneimgix\\assetbundles\\oneimgix\\OneImgixAsset") %}
 
 {{ forms.autosuggestField({
-    label: 'Imgix API Key',
-    instructions: 'Your Imgix API key.',
-    suggestEnvVars: true,
-    id: 'apiKey',
-    name: 'apiKey',
-    value: settings['apiKey']})
-}}
+  label: 'Imgix API Key',
+  instructions: 'Your Imgix API key.',
+  suggestEnvVars: true,
+  id: 'apiKey',
+  name: 'apiKey',
+  value: settings['apiKey'],
+  errors: settings.getErrors('apiKey')
+}) }}
 
 {{ forms.autosuggestField({
-    label: 'Imgix Source Name',
-    instructions: 'The name of your Imgix source.',
-    suggestEnvVars: true,
-    id: 'sourceName',
-    name: 'sourceName',
-    value: settings['sourceName']})
-}}
+  label: 'Imgix Source Name',
+  instructions: 'The name of your Imgix source.',
+  suggestEnvVars: true,
+  id: 'sourceName',
+  name: 'sourceName',
+  value: settings['sourceName'],
+  errors: settings.getErrors('sourceName')
+}) }}
 
 {{ forms.autosuggestField({
-    label: 'Secure URL Token',
-    instructions: 'If you have `Secure URL` enabled for your Imgix source, this should be the `Secure URL Token` value listed there.',
-    suggestEnvVars: true,
-    id: 'secureUrlToken',
-    name: 'secureUrlToken',
-    value: settings['secureUrlToken']})
-}}
+  label: 'Secure URL Token',
+  instructions: 'If you have `Secure URL` enabled for your Imgix source, this should be the `Secure URL Token` value listed there.',
+  suggestEnvVars: true,
+  id: 'secureUrlToken',
+  name: 'secureUrlToken',
+  value: settings['secureUrlToken'],
+  errors: settings.getErrors('secureUrlToken')
+}) }}
 
 {{ forms.autosuggestField({
-    label: 'Asset Base URL',
-    instructions: 'This is the base url for your Craft assets, up to but not including the asset source directory. For instance: https://s3.amazonaws.com/your-bucket-name/',
-    suggestEnvVars: true,
-    id: 'assetBaseUrl',
-    name: 'assetBaseUrl',
-    value: settings['assetBaseUrl']})
-}}
+  label: 'Asset Base URL',
+  instructions: 'This is the base url for your Craft assets, up to but not including the asset source directory. For instance: https://s3.amazonaws.com/your-bucket-name/',
+  suggestEnvVars: true,
+  id: 'assetBaseUrl',
+  name: 'assetBaseUrl',
+  errors: settings.getErrors('assetBaseUrl'),
+  value: settings['assetBaseUrl']
+}) }}
