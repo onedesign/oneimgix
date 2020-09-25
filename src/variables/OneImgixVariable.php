@@ -32,7 +32,7 @@ class OneImgixVariable
 
     public function srcSet(Asset $asset, array $params = [], array $options = []): string
     {
-        return OneImgix::$plugin->oneImgixService->srcSet($asset, $params, $options);
+        return OneImgix::$plugin->imgix->srcSet($asset, $params, $options);
     }
 
 }
