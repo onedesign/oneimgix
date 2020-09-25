@@ -10,7 +10,11 @@
 
 namespace onedesign\oneimgix;
 
-use onedesign\oneimgix\services\OneImgixService as OneImgixServiceService;
+use craft\events\RegisterComponentTypesEvent;
+use craft\services\Utilities;
+use onedesign\oneimgix\services\ImgixService;
+use onedesign\oneimgix\services\PurgeService;
+use onedesign\oneimgix\utilities\PurgeUtility;
 use onedesign\oneimgix\variables\OneImgixVariable;
 use onedesign\oneimgix\models\Settings;
 
@@ -29,7 +33,8 @@ use yii\base\Event;
  * @package   OneImgix
  * @since     2.0.0
  *
- * @property  OneImgixServiceService $oneImgixService
+ * @property ImgixService $imgix
+ * @property PurgeService $purge
  */
 class OneImgix extends Plugin
 {
@@ -60,10 +65,15 @@ class OneImgix extends Plugin
         parent::init();
         self::$plugin = $this;
 
+        $this->setComponents([
+            'imgix' => ImgixService::class,
+            'purge' => PurgeService::class
+        ]);
+
         Event::on(
             CraftVariable::class,
             CraftVariable::EVENT_INIT,
-            function (Event $event) {
+            function(Event $event) {
                 /** @var CraftVariable $variable */
                 $variable = $event->sender;
                 $variable->set('oneImgix', OneImgixVariable::class);
@@ -73,9 +83,15 @@ class OneImgix extends Plugin
         Event::on(
             Plugins::class,
             Plugins::EVENT_AFTER_INSTALL_PLUGIN,
-            function (PluginEvent $event) {
+            function(PluginEvent $event) {
                 if ($event->plugin === $this) {
                 }
+            }
+        );
+
+        Event::on(Utilities::class, Utilities::EVENT_REGISTER_UTILITY_TYPES,
+            function(RegisterComponentTypesEvent $event) {
+                $event->types[] = PurgeUtility::class;
             }
         );
 

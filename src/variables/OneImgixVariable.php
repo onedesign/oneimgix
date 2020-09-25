@@ -27,7 +27,12 @@ class OneImgixVariable
 
     final public function url(Asset $asset, array $params = []): string
     {
-        return OneImgix::$plugin->oneImgixService->url($asset, $params);
+        return OneImgix::$plugin->imgix->url($asset, $params);
+    }
+
+    public function srcSet(Asset $asset, array $params = [], array $options = []): string
+    {
+        return OneImgix::$plugin->imgix->srcSet($asset, $params, $options);
     }
 
 }
