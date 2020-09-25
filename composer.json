@@ -2,7 +2,7 @@
   "name": "onedesign/oneimgix",
   "description": "Tools for working with Imgix in Craft",
   "type": "craft-plugin",
-  "version": "2.0-beta.2",
+  "version": "2.0-beta.3",
   "keywords": [
     "craft",
     "cms",
