@@ -6,20 +6,22 @@
 namespace onedesign\oneimgix\controllers;
 
 use Craft;
-use craft\helpers\ArrayHelper;
-use craft\helpers\Json;
-use craft\helpers\StringHelper;
+use craft\helpers\UrlHelper;
 use craft\web\Controller;
-use craft\web\View;
 use onedesign\oneimgix\OneImgix;
-use putyourlightson\blitz\Blitz;
-use yii\web\ForbiddenHttpException;
 use yii\web\Response;
 
 class PurgeController extends Controller
 {
 
-    public function actionPurgeUrl(): Response
+    /**
+     * Purges urls with Imgix
+     *
+     * @return Response|null
+     * @throws \craft\errors\MissingComponentException
+     * @throws \yii\web\BadRequestHttpException
+     */
+    public function actionPurgeUrl()
     {
         $request = Craft::$app->getRequest();
 
@@ -28,42 +30,39 @@ class PurgeController extends Controller
 
         $urls = explode(PHP_EOL, $inputString);
 
+        $uniqueUrls = [];
+        foreach ($urls as $url) {
+            $cleanUrl = UrlHelper::stripQueryString(trim($url));
+            $uniqueUrls[$cleanUrl] = true;
+        }
+
         $purger = OneImgix::getInstance()->purge;
         $results = [];
 
-        foreach ($urls as $url) {
-            $url = trim($url);
+        foreach (array_keys($uniqueUrls) as $url) {
             $results[$url] = $purger->purgeUrl(trim($url));
         }
 
         $successful = array_keys($results, true);
         $failures = array_keys($results, false);
 
-        if (count($urls) === count($successful)) {
-            Craft::$app->getSession()->setNotice('URL successfully purged.');
-            Craft::info(sprintf('Succesfully purged %d urls: %s', count($successful), Json::encode($successful)), 'one-imgix');
+        $lineSeparator = PHP_EOL . "\t";
 
-            if ($request->getAcceptsJson()) {
-                return $this->asJson([
-                    'success' => true,
-                    'message' => 'URL successfully purged.'
-                ]);
-            }
-        } else {
-            Craft::$app->getSession()->setError('Failed to purge URL.');
-            Craft::error(sprintf('Failed to purge %d urls: %s', count($failures), Json::encode($failures)), 'one-imgix');
-
-
-
-            if ($request->getAcceptsJson()) {
-                return $this->asJson([
-                    'success' => false,
-                    'message' => 'Failed to purge URL.'
-                ]);
-            }
+        if (count($successful) === count($urls) && count($failures) === 0) {
+            Craft::info('Purge request successful for URLS' . $lineSeparator . implode($lineSeparator, $successful), 'one-imgix');
+            Craft::$app->getSession()->setNotice(Craft::t('one-imgix', '{count} purge requests sent.', [
+                'count' => count($successful)
+            ]));
         }
+
+        if (count($failures)) {
+            Craft::error('Failed to purge URLs: ' . $lineSeparator . implode($lineSeparator, $failures), 'one-imgix');
+            Craft::$app->getSession()->setError(Craft::t('one-imgix', '{count} URLs failed to purge', [
+                'count' => count($failures)
+            ]));
+        }
+
 
         return $this->redirectToPostedUrl();
     }
-
 }
