@@ -1,0 +1,22 @@
+{% import "_includes/forms" as forms %}
+
+<h1>{{ 'Purge Imgix Cache'|t('one-imgix') }}</h1>
+
+<hr>
+{% for action in actions %}
+  <form method="post" accept-charset="UTF-8">
+    {{ actionInput("one-imgix/purge/#{action.id}") }}
+    {{ csrfInput() }}
+
+    {% for name, field in action.fields %}
+      {{ forms.textareaField({
+        name: name,
+        label: field.label,
+        instructions: field.instructions,
+        class: 'nicetext',
+      }) }}
+    {% endfor %}
+
+    <input type="submit" class="btn submit" value="{{ action.label|t('one-imgix') }}">
+  </form>
+{% endfor %}

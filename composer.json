@@ -2,6 +2,7 @@
   "name": "onedesign/oneimgix",
   "description": "Tools for working with Imgix in Craft",
   "type": "craft-plugin",
+  "version": "2.0-beta.1",
   "keywords": [
     "craft",
     "cms",
@@ -21,6 +22,7 @@
     }
   ],
   "require": {
+    "php": "^7.0",
     "craftcms/cms": "^3.0.0-RC1",
     "imgix/imgix-php": "dev-main"
   }
@@ -39,9 +41,6 @@
     "hasCpSettings": true,
     "hasCpSection": false,
     "changelogUrl": "https://raw.githubusercontent.com/onedesign/oneimgix/master/CHANGELOG.md",
-    "components": {
-      "oneImgixService": "onedesign\\oneimgix\\services\\OneImgixService"
-    },
     "class": "onedesign\\oneimgix\\OneImgix"
   }
 }

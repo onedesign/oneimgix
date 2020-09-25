@@ -23,7 +23,7 @@ use craft\base\Component;
  * @package   OneImgix
  * @since     2.0.0
  */
-class OneImgixService extends Component
+class ImgixService extends Component
 {
     /**
      * Imgix URL builder instance
