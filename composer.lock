@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dd0c74c9aea5170e5a612ab3b2b794c0",
+    "content-hash": "2931c608f3dd68639a65c2044dd468cf",
     "packages": [
         {
             "name": "cebe/markdown",
@@ -1221,16 +1221,16 @@
         },
         {
             "name": "imgix/imgix-php",
-            "version": "dev-main",
+            "version": "3.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/imgix/imgix-php.git",
-                "reference": "adad1a5197f67909bf6cefc31729f3a35251ce2b"
+                "reference": "6995ca3440fe442b1175c12dc63b41617568b606"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/imgix/imgix-php/zipball/adad1a5197f67909bf6cefc31729f3a35251ce2b",
-                "reference": "adad1a5197f67909bf6cefc31729f3a35251ce2b",
+                "url": "https://api.github.com/repos/imgix/imgix-php/zipball/6995ca3440fe442b1175c12dc63b41617568b606",
+                "reference": "6995ca3440fe442b1175c12dc63b41617568b606",
                 "shasum": ""
             },
             "require": {
@@ -1253,7 +1253,7 @@
             "keywords": [
                 "imgix"
             ],
-            "time": "2020-08-04T21:15:37+00:00"
+            "time": "2020-06-05T21:57:36+00:00"
         },
         {
             "name": "intervention/httpauth",
@@ -5867,7 +5867,6 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "craftcms/cms": 5,
-        "imgix/imgix-php": 20,
         "roave/security-advisories": 20
     },
     "prefer-stable": false,
