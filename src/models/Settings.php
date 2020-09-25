@@ -40,11 +40,6 @@ class Settings extends Model
      */
     public $secureUrlToken = '';
 
-    /**
-     * @var string
-     */
-    public $assetBaseUrl = '';
-
     // Public Methods
     // =========================================================================
 
@@ -54,11 +49,10 @@ class Settings extends Model
     public function rules()
     {
         return [
-            [['apiKey', 'sourceName', 'assetBaseUrl'], 'required'],
+            [['apiKey', 'sourceName'], 'required'],
             ['apiKey', 'string'],
             ['sourceName', 'string'],
-            ['secureUrlToken', 'string'],
-            ['assetBaseUrl', 'string']
+            ['secureUrlToken', 'string']
         ];
     }
 }
