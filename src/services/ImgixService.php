@@ -71,17 +71,14 @@ class ImgixService extends Component
     private function getFilePath(Asset $asset)
     {
         $assetVolume = $asset->getVolume();
-        $volumeClass = get_class($assetVolume);
+        $assetPath = $asset->getPath();
 
-        // TODO: Support more volume classes
-        switch ($volumeClass) {
-            case Volume::class:
-                $subfolder = $asset->getVolume()->subfolder;
-                $filename = $asset->filename;
-                return $subfolder . '/' . $filename;
-            default:
-                return '';
+        if ($assetVolume->subfolder ?? null) {
+            $subfolder = $assetVolume->subfolder;
+            return rtrim($subfolder, '/') . '/' . $assetPath;
         }
+
+        return $assetPath;
     }
 
     // Public Methods
