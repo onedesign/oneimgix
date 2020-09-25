@@ -41,16 +41,6 @@ class ImgixService extends Component
         return "${source}.imgix.net";
     }
 
-    private function getApiKey()
-    {
-        return Craft::parseEnv(OneImgix::getInstance()->getSettings()->apiKey);
-    }
-
-    private function getAssetBaseUrl()
-    {
-        return Craft::parseEnv(OneImgix::getInstance()->getSettings()->assetBaseUrl);
-    }
-
     private function getSecureUrlToken()
     {
         return Craft::parseEnv(OneImgix::getInstance()->getSettings()->secureUrlToken);
@@ -74,8 +64,8 @@ class ImgixService extends Component
         $assetPath = $asset->getPath();
 
         if ($assetVolume->subfolder ?? null) {
-            $subfolder = $assetVolume->subfolder;
-            return rtrim($subfolder, '/') . '/' . $assetPath;
+            $subFolder = $assetVolume->subfolder;
+            return rtrim($subFolder, '/') . '/' . $assetPath;
         }
 
         return $assetPath;
