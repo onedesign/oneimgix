@@ -47,12 +47,3 @@
   errors: settings.getErrors('secureUrlToken')
 }) }}
 
-{{ forms.autosuggestField({
-  label: 'Asset Base URL',
-  instructions: 'This is the base url for your Craft assets, up to but not including the asset source directory. For instance: https://s3.amazonaws.com/your-bucket-name/',
-  suggestEnvVars: true,
-  id: 'assetBaseUrl',
-  name: 'assetBaseUrl',
-  errors: settings.getErrors('assetBaseUrl'),
-  value: settings['assetBaseUrl']
-}) }}
