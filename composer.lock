@@ -1,11 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "hash": "13fcb0408169b6fc5b5881d5a9ee2dd6",
-    "content-hash": "9cd3043334685a1ac114d1c80b242099",
+    "content-hash": "1342b8f5aa0111a1f446b9da288fd11f",
     "packages": [
         {
             "name": "composer/installers",
@@ -112,20 +111,20 @@
                 "zend",
                 "zikula"
             ],
-            "time": "2016-08-13 20:53:52"
+            "time": "2016-08-13T20:53:52+00:00"
         },
         {
             "name": "imgix/imgix-php",
-            "version": "dev-master",
+            "version": "dev-main",
             "source": {
                 "type": "git",
                 "url": "https://github.com/imgix/imgix-php.git",
-                "reference": "024a9379310e6ef848bc4fe78fcfefddfc49a306"
+                "reference": "adad1a5197f67909bf6cefc31729f3a35251ce2b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/imgix/imgix-php/zipball/024a9379310e6ef848bc4fe78fcfefddfc49a306",
-                "reference": "024a9379310e6ef848bc4fe78fcfefddfc49a306",
+                "url": "https://api.github.com/repos/imgix/imgix-php/zipball/adad1a5197f67909bf6cefc31729f3a35251ce2b",
+                "reference": "adad1a5197f67909bf6cefc31729f3a35251ce2b",
                 "shasum": ""
             },
             "require": {
@@ -141,11 +140,14 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
             "description": "A PHP client library for generating URLs with imgix.",
             "keywords": [
                 "imgix"
             ],
-            "time": "2016-10-20 23:10:53"
+            "time": "2020-08-04T21:15:37+00:00"
         }
     ],
     "packages-dev": [],
@@ -157,5 +159,6 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "1.1.0"
 }

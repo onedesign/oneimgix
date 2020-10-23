@@ -25,7 +25,7 @@
             "composer/composer": "1.0.*@dev",
             "phpunit/phpunit": "4.1.*"
         },
-        "time": "2016-08-13 20:53:52",
+        "time": "2016-08-13T20:53:52+00:00",
         "type": "composer-plugin",
         "extra": {
             "class": "Composer\\Installers\\Plugin",
@@ -110,17 +110,17 @@
     },
     {
         "name": "imgix/imgix-php",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
+        "version": "dev-main",
+        "version_normalized": "dev-main",
         "source": {
             "type": "git",
             "url": "https://github.com/imgix/imgix-php.git",
-            "reference": "024a9379310e6ef848bc4fe78fcfefddfc49a306"
+            "reference": "adad1a5197f67909bf6cefc31729f3a35251ce2b"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/imgix/imgix-php/zipball/024a9379310e6ef848bc4fe78fcfefddfc49a306",
-            "reference": "024a9379310e6ef848bc4fe78fcfefddfc49a306",
+            "url": "https://api.github.com/repos/imgix/imgix-php/zipball/adad1a5197f67909bf6cefc31729f3a35251ce2b",
+            "reference": "adad1a5197f67909bf6cefc31729f3a35251ce2b",
             "shasum": ""
         },
         "require": {
@@ -129,7 +129,7 @@
         "require-dev": {
             "phpunit/phpunit": "*"
         },
-        "time": "2016-10-20 23:10:53",
+        "time": "2020-08-04T21:15:37+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
@@ -138,6 +138,9 @@
             }
         },
         "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-2-Clause"
+        ],
         "description": "A PHP client library for generating URLs with imgix.",
         "keywords": [
             "imgix"
