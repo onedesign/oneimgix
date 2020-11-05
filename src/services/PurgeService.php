@@ -10,10 +10,6 @@
 
 namespace onedesign\oneimgix\services;
 
-use craft\elements\Asset;
-use craft\helpers\Json;
-use Guzzle\Service\Client;
-use Imgix\UrlBuilder;
 use onedesign\oneimgix\OneImgix;
 
 use Craft;

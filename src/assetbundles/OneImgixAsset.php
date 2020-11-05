@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2020 One Design Company
  */
 
-namespace onedesign\oneimgix\assetbundles\OneImgix;
+namespace onedesign\oneimgix\assetbundles;
 
 use Craft;
 use craft\web\AssetBundle;

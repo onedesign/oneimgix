@@ -10,7 +10,6 @@
 
 namespace onedesign\oneimgix\services;
 
-use craft\awss3\Volume;
 use craft\elements\Asset;
 use Imgix\UrlBuilder;
 use onedesign\oneimgix\OneImgix;
