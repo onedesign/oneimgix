@@ -11,6 +11,6 @@
   ],
   "require": {
     "composer/installers": "~1.0",
-    "imgix/imgix-php": "dev-master"
+    "imgix/imgix-php": "^3.0.0"
   }
 }
