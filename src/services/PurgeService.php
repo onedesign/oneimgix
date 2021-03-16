@@ -31,11 +31,8 @@ class PurgeService extends Component
             $this->client = Craft::createGuzzleClient([
                 'base_uri' => 'https://api.imgix.com',
                 'headers' => [
-                    'Content-Type' => 'application/json'
-                ],
-                'auth' => [
-                    $api_key,
-                    ''
+                    'Content-Type' => 'application/vnd.api+json',
+                    'Authorization' => 'Bearer ' . $api_key
                 ]
             ]);
         }
@@ -48,9 +45,14 @@ class PurgeService extends Component
         $client = $this->getClient();
 
         try {
-            $response = $client->post('v2/image/purger', [
+            $response = $client->post('api/v1/purge', [
                 'json' => [
-                    'url' => $url
+                  'data' => [
+                    'attributes' => [
+                        'url' => $url,
+                    ],
+                    'type' => 'purges'
+                  ]
                 ]
             ]);
             return $response->getStatusCode() === 200;
