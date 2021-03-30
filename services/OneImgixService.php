@@ -81,18 +81,27 @@ class OneImgixService extends BaseApplicationComponent
     public function purgeImgixUrl($imageUrl)
     {
         $apiKey = $this->getApiKey();
-        $purgeUrl = 'https://api.imgix.com/v2/image/purger';
-        $client = new \Guzzle\Http\Client();
+        $purgeUrl = 'https://api.imgix.com/api/v1/purge';
 
         try {
+            $params = [
+                'data' => [
+                    'attributes' => [
+                        'url' => $imageUrl,
+                    ],
+                    'type' => 'purges'
+                ]
+            ];
+
+            $encodedParams = json_encode($params);
+
+            $client = new \Guzzle\Http\Client();
             $request = $client->post($purgeUrl,
                 [
-                    'Content-Type'  => 'application/json',
-                    'Authorization' => 'Basic ' . base64_encode($apiKey . ':')
+                    'Content-Type' => 'application/vnd.api+json',
+                    'Authorization' => 'Bearer ' . $apiKey
                 ],
-                [
-                    'url' => $imageUrl
-                ]
+                $encodedParams
             );
 
             $response = $request->send();
